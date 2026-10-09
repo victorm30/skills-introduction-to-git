@@ -286,7 +286,6 @@ function checkPatternMatch() {
     }
   }
 }
-
 // Check if pattern matches at position
 function matchesPattern(startRow, startCol) {
   for (let row = 0; row < PATTERN_SIZE; row++) {
