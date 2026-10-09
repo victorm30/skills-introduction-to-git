@@ -39,7 +39,8 @@ let currentX = 0;
 let currentY = 0;
 let score = 0;
 let highScore = 0;
-let isPaused = false;
+let level = 1;
+let patternsCleared = 0;
 let dropCounter = 0;
 let dropInterval = 1000;
 let lastTime = 0;
@@ -271,6 +272,12 @@ function checkPatternMatch() {
       if (matchesPattern(startRow, startCol)) {
         clearPattern(startRow, startCol);
         score += 100;
+        patternsCleared++;
+        if (patternsCleared % 5 === 0) {
+          level++;
+          dropInterval = Math.max(200, 1000 - (level - 1) * 100);
+          document.getElementById("level").textContent = level;
+        }
         updateScore();
         setNewTargetPattern();
         return;
